@@ -33,7 +33,7 @@
             FHIR.oauth2.ready().then(function(client) {
                 var app = new App(client);
                 app.renderContext();
-                app.request("metadata");
+                app.request("Patient?_id=SMART-1288992");
             }).catch(createRenderer("output"));
         </script>
 </body>
