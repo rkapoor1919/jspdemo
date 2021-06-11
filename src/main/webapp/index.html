@@ -13,18 +13,7 @@
 </head>
 <body>
 <a href="student.html">Go the second page</a>
-	<div class="cell top-left">
-		<h4>Current Patienttttttttttt</h4>
-		<pre id="patient"></pre>
-	</div>
-	<div class="cell top-center">
-		<h4>Current User</h4>
-		<pre id="user"></pre>
-	</div>
-	<div class="cell top-right">
-		<h4>Current Encounter</h4>
-		<pre id="encounter"></pre>
-	</div>
+
 	<div class="cell bottom">
 		<h4>Main Output</h4>
 		<pre id="output">Loading...</pre>
@@ -32,7 +21,6 @@
 	<script type="text/javascript">
             FHIR.oauth2.ready().then(function(client) {
                 var app = new App(client);
-                app.renderContext();
                 app.request("Patient?_id=SMART-1288992");
             }).catch(createRenderer("output"));
         </script>
