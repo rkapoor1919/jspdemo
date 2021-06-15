@@ -8,21 +8,50 @@
 <link rel="stylesheet" href="../style.css">
 <!-- <script src='./lib/js/fhir-client-v0.1.12.js'></script> -->
 <!-- <script src="https://combinatronics.com/smart-on-fhir/client-js/master/dist/build/fhir-client.js"></script> -->
+<script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="./fhir-client.js"></script>
-<script src="./app.js"></script>
-</head>
-<body>
-<a href="student.html">Go the second page</a>
 
-	<div class="cell bottom">
-		<h4>Main Output</h4>
-		<pre id="output">Loading...</pre>
-	</div>
+<script src="./jquery.min.js"></script>
+
+<script src="./app.js"></script>
+
+</head>
+<h1>WELCOME TO B1 EMBEDDED FHIR APP</h1>
+<img src="C:\Users\rkapoor\Desktop\B1FHIR\jspdemo\src\resource\b1logo.png"  width="200" height="51" alt="b1 Engineering Solutions Logo" data-retina_logo_url="" class="fusion-standard-logo" />
+									
+<body>
+
+	<form name="loginForm" method="post" action="FhirR4Servlet">
+        <textarea name="feedback" id='output' hidden="true"></textarea>
+    <input type="submit" value="Press here to view Patient data" />
+</form>
+
+
 	<script type="text/javascript">
             FHIR.oauth2.ready().then(function(client) {
                 var app = new App(client);
-                app.request("Patient?_id=SMART-1288992");
+                app.request("Patient");
             }).catch(createRenderer("output"));
         </script>
+        
+<!-- 	<script type="text/javascript">
+	 function fun()
+     {
+      console.log(output);
+      var formData=output;
+     $.ajax({
+  		url: "StudentServlet",
+  		type: 'POST',
+  	   data:{ ListID: '1', ItemName: 'test' },	
+  	   processData: false,
+       dataType: "text",
+       contentType: "application/json; charset=utf-8",
+       success: function(response) { alert(response); },
+       error: function(xhr, ajaxOptions, thrownError) { alert(xhr.responseText); }
+     });
+      //validation code to see State field is mandatory.  
+     }   
+   </script> -->
 </body>
 </html>
