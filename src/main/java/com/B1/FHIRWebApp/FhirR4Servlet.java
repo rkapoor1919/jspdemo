@@ -1,7 +1,9 @@
-package com.rkapoor.jspdemo;
+package com.B1.FHIRWebApp;
 
 import java.io.IOException;
 import java.util.List;
+
+import com.B1.FHIRWebApp.PatientDataUtil;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,8 +11,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import com.rkapoor.jspdemo.PatientDataUtil;
 /**
  * Servlet implementation class FhirR4Servlet
  */
@@ -46,6 +46,7 @@ public class FhirR4Servlet extends HttpServlet {
 		// step 2: add students to request object
 		request.setAttribute("patient_list", patients);
 		// step 3: get request dispatcher
+		
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher("viewPatientData.jsp");	
 		
@@ -61,8 +62,10 @@ public class FhirR4Servlet extends HttpServlet {
 		// step 1: get the patient data from helper class (model)
 		
 		String feedback = request.getParameter("feedback");
-		patients = obj.ParsePatientData(feedback);
+		if(feedback!="")patients = obj.ParsePatientData(feedback);
 		
+		for(int i=0;i<patients.size();++i)
+		System.out.println(patients.get(i).getIdUse());
 		
 		doGet(request, response);
 	}

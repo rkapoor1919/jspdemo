@@ -38,6 +38,23 @@ App.prototype.request = function(requestOptions, fhirOptions) {
   return this.client.request(requestOptions, fhirOptions).then(render, render);
 };
 
+App.prototype.create = function(resource,requestOptions) {
+
+  return this.client.create(resource,requestOptions);
+};
+
+App.prototype.update = function(resource,requestOptions) {
+  var render = createRenderer("output");
+  render("Loading...");
+  return this.client.update(resource,requestOptions).then(render, render);
+};
+
+App.prototype.delete = function(resource,requestOptions) {
+  var render = createRenderer("output");
+  render("Loading...");
+  return this.client.delete(resource,requestOptions).then(render, render);
+};
+
 App.prototype.renderContext = function() {
   return Promise.all([
     this.fetchCurrentPatient(),
